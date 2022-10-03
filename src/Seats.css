@@ -1,0 +1,11 @@
+.enter {
+  display: inline;
+  position: absolute;
+  top: 200px;
+}
+
+.exit {
+  display: inline;
+  position: absolute;
+  top: 350px;
+}

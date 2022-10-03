@@ -1,16 +1,50 @@
-import Seat from "./Seat";
+import Seat from './Seat';
+import './Seats.css';
 
 export default function Seats({ data }) {
-  let content = [];
-  for (let i = 0; i < 9; i++) {
-    if (data[i]) content[data[i].position] = <Seat isFree={false} />;
+  let content1 = [];
+  let content2 = [];
+  let content3 = [];
+
+  for (let i = 0; i < 3; i++) {
+    if (data[i]) content1[data[i].position] = <Seat isFree={false} />;
   }
 
-  for (let i = 0; i < 9; i++) {
-    if (!content[i]) content[i] = <Seat />;
+  for (let i = 0; i < 3; i++) {
+    if (!content1[i]) content1[i] = <Seat />;
   }
 
-  return content;
+  for (let i = 3; i < 6; i++) {
+    if (data[i]) content2[data[i].position - 3] = <Seat isFree={false} />;
+  }
+
+  for (let i = 3; i < 6; i++) {
+    if (!content2[i - 3]) content2[i - 3] = <Seat />;
+  }
+
+  for (let i = 6; i < 9; i++) {
+    if (data[i]) content3[data[i].position - 6] = <Seat isFree={false} />;
+  }
+
+  for (let i = 6; i < 9; i++) {
+    if (!content3[i - 6]) content3[i] = <Seat />;
+  }
+
+  const res = [
+    ...content1,
+    <div className="enter">← Вход</div>,
+    <br></br>,
+
+    ...content2,
+    <br></br>,
+    ...content3,
+    <div className="exit">→ Выход</div>,
+  ];
+  // console.log(res);
+  console.log(content1);
+  console.log(content2);
+  console.log(content3);
+  return res;
 }
 
 {
